@@ -5,22 +5,12 @@
 #include"Print.h"
 #include"Shift.h"
 #include"statistics.h"
+#include"sort.h"
+#include"search.h"
 
 //TODO:
 //1. В ветке templated шаблонизировать все функции кроме FillRand();
 //2. От ветки templated создать ветку templated_separation, и в ней, вынести шаблонные функции в отдельные файлы;
-
-//Функции для одномерных массивов
-template <typename T> void Sort(T arr[], const int SIZE);
-
-//Функции для двумерных массивов
-template <typename T> void Sort(T arr[][COLS], const int ROWS, const int COLS);
-
-//Функции для одномерных массивов
-template <typename T> void Search(T arr[], const int SIZE);
-
-//Функции для двумерных массивов
-template <typename T> void Search(T arr[][COLS], const int ROWS, const int COLS);
 
 void main()
 {
@@ -310,107 +300,4 @@ void main()
 	cout << "\n\tПоиск повторяющихся значений двумерного массива \"char arr[][]\":\n";
 	Print(arr_2_char, ROWS, COLS);
 	Search(arr_2_char, ROWS, COLS);
-}
-
-template <typename T> void Sort(T arr[], const int SIZE)
-{
-	for (int i = 0; i < SIZE; i++)
-	{
-		T min = arr[i];
-		for (int j = i + 1; j < SIZE; j++)
-		{
-			if (arr[j] - arr[i] < 0)
-			{
-				min = arr[j];
-				arr[j] = arr[i];
-				arr[i] = min;
-			}
-		}
-	}
-}
-
-template <typename T> void Sort(T arr[][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			T min = arr[i][j];
-			for (int k = j + 1; k < COLS; k++)
-			{
-				if (arr[i][k] - arr[i][j] < 0)
-				{
-					min = arr[i][k];
-					arr[i][k] = arr[i][j];
-					arr[i][j] = min;
-				}
-			}
-		}
-	}
-}
-
-template <typename T> void Search(T arr[], const int SIZE)
-{
-	bool printing = false;
-	for (int i = 0; i < SIZE; i++)
-	{
-		int count = 0;
-		bool counting = true;
-		for (int j = i + 1; j < SIZE; j++)
-		{
-			if (arr[i] - arr[j] == 0) count++;
-			for (int l = 0; l < i; l++)
-			{
-				if (arr[i] - arr[l] == 0)
-				{
-					counting = false;
-					count = 0;
-				}
-			}
-			if (count == 1 && counting)
-			{
-				cout << "\tЗначение: ";
-				counting = false;
-				printing = true;
-			}
-		}
-		if (count > 0) cout << arr[i] << " повторяется " << count + 1 << (((count - 1) % 10 < 5 || (count - 1) % 10 > 1) ? " раза.\n" : " раз.\n");
-	}
-	if (!printing) cout << "Повторяющихся значений не обнаружено.\n";
-}
-
-template <typename T> void Search(T arr[][COLS], const int ROWS, const int COLS)
-{
-	bool printing = false;
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			int count = 0;
-			bool counting = true;
-			for (int k = i + 1; k < ROWS; k++)
-			{
-				for (int l = j + 1; l < COLS; l++)
-				{
-					if ((arr[i][j] - arr[k][l]) == 0) count++;
-					for (int l = 0; l < i; l++)
-					{
-						if ((arr[i][j] - arr[k][l]) == 0)
-						{
-							counting = false;
-							count = 0;
-						}
-					}
-					if (count == 1 && counting)
-					{
-						cout << "\tЗначение: ";
-						counting = false;
-						printing = true;
-					}
-				}
-			}
-			if (count > 0) cout << arr[i][j] << " повторяется " << count + 1 << (((count - 1) % 10 < 5 || (count - 1) % 10 > 1) ? " раза.\n" : " раз.\n");
-		}
-	}
-	if (!printing) cout << "Повторяющихся значений не обнаружено.\n";
 }
