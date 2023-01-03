@@ -3,10 +3,15 @@
 #include"constants.h"
 #include"Fill_rand.h"
 #include"Print.h"
+#include"Print.cpp"
 #include"Shift.h"
+#include"Shift.cpp"
 #include"statistics.h"
+#include"statistics.cpp"
 #include"sort.h"
+#include"sort.cpp"
 #include"search.h"
+#include"search.cpp"
 
 //TODO:
 //1. В ветке templated шаблонизировать все функции кроме FillRand();
@@ -20,7 +25,7 @@ void main()
 	cout << "\t\t***Домашнее задание \"Функции. Перегрузка функций. Шаблоны. Ветка Templated.\"***\n\n";
 	const int SIZE = 10;
 	int shift = 0;
-	int limit, min_rand, max_rand;
+	int min_rand, max_rand;
 	char input;
 
 	int arr_int[SIZE] = {};

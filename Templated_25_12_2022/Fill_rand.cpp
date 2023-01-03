@@ -20,7 +20,7 @@ void Fill_rand(double arr[], const int SIZE, double min_rand, double max_rand)
 	if ((max_rand - min_rand) == 0) max_rand++;
 	if ((min_rand - max_rand) > 0)
 	{
-		int buffer = min_rand;
+		double buffer = min_rand;
 		min_rand = max_rand;
 		max_rand = buffer;
 	}
@@ -36,13 +36,13 @@ void Fill_rand(float arr[], const int SIZE, float min_rand, float max_rand)
 	if ((max_rand - min_rand) == 0) max_rand++;
 	if ((min_rand - max_rand) > 0)
 	{
-		int buffer = min_rand;
+		float buffer = min_rand;
 		min_rand = max_rand;
 		max_rand = buffer;
 	}
 	for (int i = 0; i < SIZE; i++)
 	{
-		arr[i] = rand();
+		arr[i] = (float)rand();
 		while (arr[i] >= max_rand) arr[i] /= 10;
 	}
 }
@@ -52,7 +52,7 @@ void Fill_rand(char arr[], const int SIZE, char min_rand, char max_rand)
 	if ((max_rand - min_rand) == 0) max_rand++;
 	if ((min_rand - max_rand) > 0)
 	{
-		int buffer = min_rand;
+		char buffer = min_rand;
 		min_rand = max_rand;
 		max_rand = buffer;
 	}
@@ -85,7 +85,7 @@ void Fill_rand(double arr[][COLS], const int ROWS, const int COLS, double min_ra
 	if ((max_rand - min_rand) == 0) max_rand++;
 	if ((min_rand - max_rand) > 0)
 	{
-		int buffer = min_rand;
+		double buffer = min_rand;
 		min_rand = max_rand;
 		max_rand = buffer;
 	}
@@ -104,7 +104,7 @@ void Fill_rand(float arr[][COLS], const int ROWS, const int COLS, float min_rand
 	if ((max_rand - min_rand) == 0) max_rand++;
 	if ((min_rand - max_rand) > 0)
 	{
-		int buffer = min_rand;
+		float buffer = min_rand;
 		min_rand = max_rand;
 		max_rand = buffer;
 	}
@@ -112,7 +112,7 @@ void Fill_rand(float arr[][COLS], const int ROWS, const int COLS, float min_rand
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand();
+			arr[i][j] = (float)rand();
 			while (arr[i][j] - max_rand >= 0) arr[i][j] /= 10;
 		}
 	}
@@ -123,7 +123,7 @@ void Fill_rand(char arr[][COLS], const int ROWS, const int COLS, char min_rand, 
 	if ((max_rand - min_rand) == 0) max_rand++;
 	if ((min_rand - max_rand) > 0)
 	{
-		int buffer = min_rand;
+		char buffer = min_rand;
 		min_rand = max_rand;
 		max_rand = buffer;
 	}
